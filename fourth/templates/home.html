@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>fourth app Users_Home</title>
+</head>
+<body>
+<h1 style="color:darkgreen;">Home Page Users:</h1>
+<p>
+	Adding Users to Exist CSV File using Pandas DataFrame and importing Users in HTML Home<br>
+	add secret_key to make flashed messages avilable!<br>
+	add FormUser!<br>
+</p>
+	{%with msgs=get_flashed_messages(with_categories=true)%}
+		{%if msgs%}
+			{%for cat, msg in msgs%}
+				<h2 style="color:{{cat}};">{{msg if msg}}</h2>
+			{%endfor%}
+		{%endif%}
+	{%endwith%}
+<div>
+	<form method="POST" action="#">
+		{{form.hidden_tag()}}
+		{{form.name.label()}} {{form.name()}}
+		{{form.age.label()}} {{form.age()}}
+		{{form.location.label()}} {{form.location()}}
+		 {{form.submit()}}
+
+	</form>
+</div>
+	<ol><h1>Existing Users:</h1>
+		{%for i in range(users.shape[0])%}
+			<li style="color:#0998;">Name: {{users.iloc[i,0]|title}} - Age: {{users.iloc[i,1]}} - Location: {{users.iloc[i,2]|title}}</li>
+		{%endfor%}
+	</ol>
+
+</body>
+</html>
