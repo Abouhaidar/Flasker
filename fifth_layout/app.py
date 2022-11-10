@@ -2,17 +2,16 @@ from flask import Flask, request,render_template, flash
 # pip install flask-wtf
 from flask_wtf import FlaskForm
 from wtforms import SubmitField, StringField, IntegerField
-from wtforms.validators import DataRequired
+from wtforms.validators import DataRequired, Length
 import pandas as pd
 app=Flask(__name__)
 app.secret_key='bm'
 
 class UserForm(FlaskForm):
-    name=StringField('Username',validators=[DataRequired()])
+    name=StringField('Username',validators=[DataRequired(),Length(min=3,max=20)])
     age=IntegerField('Age',validators=[DataRequired()])
-    location=StringField('Location',validators=[DataRequired()])
+    location=StringField('Location',validators=[DataRequired(),Length(min=2,max=20)])
     submit=SubmitField('Add New User')
-
 
 
 ##using Flask Form
@@ -32,9 +31,9 @@ def home():
             if name not in users.name.tolist():
                 users=users.append(dict(name=name,age=age,location=location), ignore_index=True)
                 users.to_csv('data/users.csv',index=False)
-                flash(f'User {name} added successfully to CSV File!!!!','green')
+                flash(f'User {name} added successfully to CSV File!!!!','success')
             else:
-                flash(f'User {name} allready Exist!!!','red')
+                flash(f'User {name} allready Exist!!!','danger')
             form.name.data=''
             form.age.data=''
             form.location.data=''
