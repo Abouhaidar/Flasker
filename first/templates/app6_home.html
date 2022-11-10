@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>app6 Users_Home</title>
+</head>
+<body>
+
+<div>
+	<form method="POST" action="#">
+		<label>User Name: </label><input type="text" placeholder="Enter Your Name" name="username">
+		<input type="submit" value="Submit Username">
+	</form>
+</div>
+
+{%if users%}
+	{%for name in users%}
+		<h1 style="color:green;text-align:center;">Hallo {{name|title}}!!!</h1>
+	{%endfor%}
+{%endif%}
+
+</body>
+</html>

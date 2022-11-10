@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>app5 Home</title>
+</head>
+<body>
+
+<div>
+	<form method="POST" action="#">
+		<label>User Name: </label><input type="text" placeholder="Enter Your Name" name="username">
+		<input type="submit" value="Submit Username">
+	</form>
+</div>
+
+{%if name%}
+	<h1 style="color:green;text-align:center;">Hallo {{name}}!!!</h1>
+{%endif%}
+
+</body>
+</html>

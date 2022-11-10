@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>second app Users_Home</title>
+</head>
+<body>
+<h1 style="color:darkgreen;">Home Page Users:</h1>
+<p>
+	Adding Users to Exist CSV File using Pandas DataFrame and importing Users in HTML Home
+</p>
+<h2 style="color:blue;">{{msg if msg}}</h2>
+<div>
+	<form method="POST" action="#">
+		<label>User Name: </label><input type="text" placeholder="Enter Your Name" name="name"><br>
+		<label>User Age: </label><input type="number" placeholder="Enter Your Age" name="age"><br>
+		<label>User Location: </label><input type="text" placeholder="Enter Your Location" name="location"><br>
+		<input type="submit" value="Submit Username"><br>
+	</form>
+</div>
+	<ol>
+		{%for i in range(users.shape[0])%}
+			<li style="color:green;">Name: {{users.iloc[i,0]|title}} - Age: {{users.iloc[i,1]}} - Location: {{users.iloc[i,2]|title}}</li>
+		{%endfor%}
+	</ol>
+
+</body>
+</html>
