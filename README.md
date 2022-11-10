@@ -9,6 +9,10 @@ test how flask work
   save input data in txt file and upload data in HTML
 ## third:
   save input data in csv file using Pandas DataFrame and flashed Messages
+## fourth:
+	- Add subclass UserForm() inhirate from FlaskForm
+	- get flashed Messages with categories
+
 ## return simple Webpage
 firststeps to return local webpage....
 ## python in HTML
