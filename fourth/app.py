@@ -32,9 +32,9 @@ def home():
             if name not in users.name.tolist():
                 users=users.append(dict(name=name,age=age,location=location), ignore_index=True)
                 users.to_csv('data/users.csv',index=False)
-                flash('User Added!','green')
+                flash(f'User {name} added successfully to CSV File!!!!','green')
             else:
-                flash('USer allready Exist','red')
+                flash(f'User {name} allready Exist!!!','red')
             form.name.data=''
             form.age.data=''
             form.location.data=''
