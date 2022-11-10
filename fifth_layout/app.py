@@ -40,5 +40,9 @@ def home():
             form.location.data=''
     return render_template('home.html',users=users,form=form)
 
+@app.route('/test')
+def test():
+    return render_template('template.html')
+
 if __name__=='__main__':
     app.run(debug=True, port=5050)
