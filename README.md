@@ -12,6 +12,11 @@ test how flask work
 ## fourth:
 	- Add subclass UserForm() inhirate from FlaskForm
 	- get flashed Messages with categories
+--
+--
+--
+
+## 12- BluePrint with User and Admin Function delete recover Post to User
 _____________________
 Folder|description
 ---|---

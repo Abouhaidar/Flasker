@@ -1,0 +1,27 @@
+{%extends 'layout.html'%}
+
+{% block title %}
+	Update Post
+{% endblock title %}
+
+{% block content %}
+
+<p> Hallo {{current_user.name if current_user}} now u can Update your Post:
+	<strong>{{postform.title.data if postform}}</strong> </p>
+
+<div class="content-section post-form">
+	<form method="POST" action="#">
+		{{postform.hidden_tag()}}
+		 <div class="form-group">
+			{{postform.title.label(class="form-control-label")}}
+			 {{postform.title(class="form-control form-control-lg",placeholder='enter Post title')}}
+		 </div>
+		<div class="form-group">
+			{{postform.content.label(class="form-control-label")}} {{postform.content(class="form-control form-control-lg",placeholder='Post Content', rows=6)}}
+		</div>
+		 {{postform.update(class="btn btn-outline-info")}}
+	</form>
+</div>
+
+
+{% endblock content %}

@@ -1,0 +1,43 @@
+{%extends 'layout.html'%}
+
+{% block title %}
+	Add Blog Post
+{% endblock title %}
+
+
+{% block content %}
+
+<h1> Hallo {{current_user.name if current_user}} now u can post new Blog Post:</h1>
+
+<div class="content-section post-form">
+	<form method="POST" action="">
+		{{postform.hidden_tag()}}
+		 <div class="form-group">
+			{{postform.title.label(class="form-control-label")}}
+			 {{postform.title(class="form-control form-control-lg",placeholder='enter Post Title')}}
+		 </div>
+		 <div class="form-group">
+			{{postform.subject.label(class="form-control-label")}}
+			 {{postform.subject(class="form-control form-control-lg",placeholder='enter Post Subject')}}
+		 </div>
+		<div class="form-group">
+			{{postform.content.label(class="form-control-label")}} {{postform.content(class="form-control form-control-lg",placeholder='enter Post Content', rows=6)}}
+		</div>
+		 {{postform.submit(class="btn btn-outline-info")}}
+	</form>
+</div>
+<div class="content-section">
+	<h2>Existing Posts in DataBase:</h2>
+	<table class="table table-hover">
+	<tr class="table-secondary">
+		<th>PostID</th><th>Title</th><th>content</th><th>Date Added</th><th>Time Added</th>
+	</tr>
+	{%for post in posts%}
+		<tr>
+			<td>{{post.id}}</td><td>{{post.title}}</td><td>{{post.content}}</td><td>{{post.date.date}}</td><td>{{post.date.time}}</td>
+		</tr>
+	{%endfor%}
+	</table>
+</div>
+
+{% endblock content %}

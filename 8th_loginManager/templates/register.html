@@ -1,0 +1,46 @@
+{%extends 'layout.html'%}
+
+{% block title %}
+	Registration
+{% endblock title %}
+
+
+{% block content %}
+
+<h1> Please Register in this Page to be able to login and add Posts:</h1>
+<div class="content-section">
+	<form method="POST" action="#">
+		{{form.hidden_tag()}}
+		 <div class="form-group">
+			{{form.name.label(class="form-control-label")}}
+			 {{form.name(class="form-control form-control-lg",placeholder='enter your Username')}}
+		 </div>
+		<div class="form-group">
+			{{form.username.label(class="form-control-label")}} {{form.username(class="form-control form-control-lg",placeholder='enter your Location')}}
+		</div>
+		<div class="form-group">
+			{{form.password.label(class="form-control-label")}} {{form.password(class="form-control form-control-lg",placeholder='enter your Location')}}
+		</div>
+		<div class="form-group">
+			{{form.password2.label(class="form-control-label")}} {{form.password2(class="form-control form-control-lg",placeholder='enter your Location')}}
+		</div>
+		<div class="form-group">
+			{{form.location.label(class="form-control-label")}} {{form.location(class="form-control form-control-lg",placeholder='enter your Location')}}
+		</div>
+		 {{form.submit(class="btn btn-outline-info")}}
+	</form>
+</div>
+<div class="content-section">
+<h2>Existing Users in DataBase:</h2>
+<table class="table table-hover">
+	<tr class="table-secondary">
+		<th>Id</th><th>Name</th><th>Username</th><th>Location</th><th>Password</th><th>Date Added</th><th>Time Added</th>
+	</tr>
+	{%for user in users%}
+		<tr>
+			<td>{{user.id}}</td><td>{{user.name}}</td><td>{{user.username}}</td><td>{{user.location}}</td><td>{{user.password}}</td><td>{{user.date.date}}</td><td>{{user.date.time}}</td>
+		</tr>
+	{%endfor%}
+</table>
+</div>
+{% endblock content %}

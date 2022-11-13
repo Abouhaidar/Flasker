@@ -1,0 +1,77 @@
+{%extends 'layout.html'%}
+
+{% block title %}
+	Admin Dashboard
+{% endblock title %}
+
+{% block content %}
+<div class="content-section">
+	<h3>Name: {{current_user.name}}</h3>
+	<p>UserID: {{current_user.id}}</p>
+	<p>Username: {{current_user.username}}</p>
+	<p>Password: {{current_user.password}}</p>
+	<p>Location: {{current_user.location}}</p>
+	<p>Regstration: --Dare: {{current_user.date.date}} --Time: {{current_user.date.time}}</p>
+</div>
+
+<div class="content-section">
+	<h1> Updating Profile Data:</h1>
+	<form method="POST" action="#">
+		{{form.hidden_tag()}}
+		 <div class="form-group">
+			{{form.name.label(class="form-control-label")}}
+			 {{form.name(class="form-control form-control-lg",placeholder='enter your Username')}}
+		 </div>
+		<div class="form-group">
+			{{form.username.label(class="form-control-label")}} {{form.username(class="form-control form-control-lg",placeholder='enter your Location')}}
+		</div>
+		<div class="form-group">
+			{{form.location.label(class="form-control-label")}} {{form.location(class="form-control form-control-lg",placeholder='enter your Location')}}
+		</div>
+		 {{form.update(class="btn btn-outline-info")}}
+	</form>
+</div>
+<div class="content-section">
+	<h2>Admin {{current_user.name}} Posts:</h2>
+	<ol>
+	{%for post in current_user.posts%}
+	<li>subject: {{post.subject}}- Title: {{post.title}} -Posted at {{post.date.date}}-{{post.date.time}}<br> ......Content: {{post.content|safe}} </li>
+
+
+		<button type="button" class="btn btn-secondary btn-sm m-1" data-toggle="modal" data-target="#update_post-{{post.id}}">Update</button>
+		<button type="button" class="btn btn-danger btn-sm m-1" data-toggle="modal" data-target="#delete_post-{{post.id}}">Delete Post</button>
+		<button type="button" class="btn btn-success btn-sm m-1" data-toggle="modal" data-target="#view_post-{{post.id}}">View_Post</button>
+		{%include 'modals.html'%}
+		{%endfor%}
+	</ol>
+
+</div>
+<div class="content-section">
+	<h1>Admin Area: Deleted Posts from Users:</h1>
+	<div>
+		{%for user in users %}
+		{%if user.deletedposts%}
+			<div class="content-section">
+				<h2>{{user.name}} Posts:</h2>
+
+				<ol>
+				{%for post in user.deletedposts%}
+				<li>subject: {{post.subject}}-<br> Title: {{post.title}} <br>-deleter Name: {{post.creater.name}}--ID:{{post.user_id}}<br> <br>......Content: {{post.content[150]}} </li>
+
+			<a class="btn btn-danger btn-lg m-1" href="{{url_for('adminapp.delpost',id=post.id)}}">Delete this Post Endgültig</a>
+			<a class="btn btn-secondary btn-lg m-1" href="{{url_for('adminapp.recoverpost',id=post.id)}}">Recover this Post</a>
+			<button type="button" class="btn btn-success btn-sm m-1" data-toggle="modal" data-target="#view_post-{{post.id}}">View_Post</button>
+			{%include 'modals.html'%}
+		{%endfor%}
+	</ol>
+
+		</div>
+				{%endif%}
+
+		{%endfor%}
+	</div>
+
+
+</div>
+
+{% endblock content %}

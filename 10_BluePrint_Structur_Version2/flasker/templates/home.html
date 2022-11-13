@@ -1,0 +1,47 @@
+{%extends 'layout.html'%}
+{% block title %}
+	7th app creatinng PostForm and PostModel
+{% endblock title %}
+
+{% block content %}
+
+<h1 style="color:darkgreen;">Home Page Users and POsts:</h1>
+<div class="container">
+	<p> list of Existing Users and their Posts in separate Table</p>
+</div>
+
+
+
+<br>
+<br>
+
+<div class="content-section">
+<h2>Existing Users in DataBase:</h2>
+<table class="table table-hover">
+	<tr class="table-secondary">
+		<th>Id</th><th>Name</th><th>Username</th><th>Location</th><th>Password</th><th>Date Added</th><th>Time Added</th>
+	</tr>
+	{%for user in users%}
+		<tr>
+			<td>{{user.id}}</td><td>{{user.name}}</td><td>{{user.username}}</td><td>{{user.location}}</td><td>{{user.password}}</td><td>{{user.date.date}}</td><td>{{user.date.time}}</td>
+		</tr>
+	{%endfor%}
+</table>
+</div>
+<br>
+<br>
+<div class="content-section">
+	<h2>Existing Posts in DataBase:</h2>
+	<table class="table table-hover">
+	<tr class="table-secondary">
+		<th>PostID</th><th>Title</th><th>content</th><th>Date Added</th><th>Time Added</th><th>post Creater</th>
+	</tr>
+	{%for post in posts%}
+		<tr>
+			<td>{{post.id}}</td><td>{{post.title}}</td><td>{{post.content|safe}}</td><td>{{post.date.date}}</td><td>{{post.date.time}}</td><td>
+			{{post.creater.name}}</td>
+		</tr>
+	{%endfor%}
+	</table>
+</div>
+{% endblock %}

@@ -1,0 +1,86 @@
+{%extends 'layout.html'%}
+{% block title %}
+	7th app creatinng PostForm and PostModel
+{% endblock title %}
+
+{% block content %}
+
+<h1 style="color:darkgreen;">Home Page Users:</h1>
+<div class="container">
+	<p>
+		Adding Users to Exist CSV File using Pandas DataFrame and importing Users in HTML Home<br>
+		add secret_key to make flashed messages avilable!<br>
+		add FormUser!<br>
+	</p>
+</div>
+
+<div class="content-section">
+	<form method="POST" action="#">
+		{{form.hidden_tag()}}
+		 <div class="form-group">
+			{{form.name.label(class="form-control-label")}}
+			 {{form.name(class="form-control form-control-lg",placeholder='enter your Username')}}
+		 </div>
+		<div class="form-group">
+			{{form.username.label(class="form-control-label")}} {{form.username(class="form-control form-control-lg",placeholder='enter your Location')}}
+		</div>
+		<div class="form-group">
+			{{form.password.label(class="form-control-label")}} {{form.password(class="form-control form-control-lg",placeholder='enter your Location')}}
+		</div>
+		<div class="form-group">
+			{{form.password2.label(class="form-control-label")}} {{form.password2(class="form-control form-control-lg",placeholder='enter your Location')}}
+		</div>
+		<div class="form-group">
+			{{form.location.label(class="form-control-label")}} {{form.location(class="form-control form-control-lg",placeholder='enter your Location')}}
+		</div>
+		 {{form.submit(class="btn btn-outline-info")}}
+	</form>
+</div>
+
+<br>
+<br>
+
+<div class="content-section post-form">
+	<form method="POST" action="#">
+		{{form.hidden_tag()}}
+		 <div class="form-group">
+			{{postform.title.label(class="form-control-label")}}
+			 {{postform.title(class="form-control form-control-lg",placeholder='enter your Username')}}
+		 </div>
+		<div class="form-group">
+			{{postform.content.label(class="form-control-label")}} {{postform.content(class="form-control form-control-lg",placeholder='enter your Location', rows=6)}}
+		</div>
+		 {{postform.submit(class="btn btn-outline-info")}}
+	</form>
+</div>
+
+<br>
+<br>
+
+<div class="content-section">
+<h2>Existing Users in DataBase:</h2>
+<table class="table table-hover">
+	<tr class="table-secondary">
+		<th>Id</th><th>Name</th><th>Username</th><th>Location</th><th>Password</th><th>Date Added</th><th>Time Added</th>
+	</tr>
+	{%for user in users%}
+		<tr>
+			<td>{{user.id}}</td><td>{{user.name}}</td><td>{{user.username}}</td><td>{{user.location}}</td><td>{{user.password}}</td><td>{{user.date.date}}</td><td>{{user.date.time}}</td>
+		</tr>
+	{%endfor%}
+</table>
+</div>
+<div class="content-section">
+	<h2>Existing Posts in DataBase:</h2>
+	<table class="table table-hover">
+	<tr class="table-secondary">
+		<th>PostID</th><th>Title</th><th>content</th><th>Date Added</th><th>Time Added</th>
+	</tr>
+	{%for post in posts%}
+		<tr>
+			<td>{{post.id}}</td><td>{{post.title}}</td><td>{{post.content}}</td><td>{{post.date.date}}</td><td>{{post.date.time}}</td>
+		</tr>
+	{%endfor%}
+	</table>
+</div>
+{% endblock %}

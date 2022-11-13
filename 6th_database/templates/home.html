@@ -1,0 +1,51 @@
+{%extends 'layout.html'%}
+{% block title %}
+	6th app working with DataBase
+{% endblock title %}
+
+{% block content %}
+
+<h1 style="color:darkgreen;">Home Page Users:</h1>
+<div class="container">
+	<p>
+		Adding Users to Exist CSV File using Pandas DataFrame and importing Users in HTML Home<br>
+		add secret_key to make flashed messages avilable!<br>
+		add FormUser!<br>
+	</p>
+</div>
+
+<div>
+	<form method="POST" action="#">
+		{{form.hidden_tag()}}
+		 <div class="form-group">
+			{{form.name.label(class="form-control-label")}}
+			 {{form.name(class="form-control form-control-lg",placeholder='enter your Username')}}
+		 </div>
+		<div class="form-group">
+			{{form.location.label(class="form-control-label")}} {{form.location(class="form-control form-control-lg",placeholder='enter your Location')}}
+		</div>
+		 {{form.submit(class="btn btn-outline-info")}}
+	</form>
+</div>
+<br>
+<br>
+<div class="container">
+	<ol><h1>Existing Users:</h1>
+		{%for user in users%}
+			<li>Name: {{user.name}} - Location: {{user.location}} - Date & Time Added: {{user.date_added}}</li>
+		{%endfor%}
+	</ol>
+</div>
+
+<h3>User Data in Table:</h3>
+<table class="table table-hover">
+	<tr class="table-secondary">
+		<th>Id</th><th>Name</th><th>Location</th><th>Date Added</th><th>Time Added</th>
+	</tr>
+	{%for user in users%}
+		<tr>
+			<td>{{user.id}}</td><td>{{user.name}}</td><td>{{user.location}}</td><td>{{user.date.date}}</td><td>{{user.date.time}}</td>
+		</tr>
+	{%endfor%}
+</table>
+{% endblock %}

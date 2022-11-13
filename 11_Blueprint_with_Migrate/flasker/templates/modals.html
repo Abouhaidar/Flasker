@@ -1,0 +1,96 @@
+<!--view Post-->
+<div class="modal fade" id="view_post-{{post.id}}" tabindex="-1" role="dialog" aria-labelledby="view_post-{{post.id}}" aria-hidden="true">
+  <div class="modal-dialog modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="view_post-{{post.id}}">{{post.title}}</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        {{post.content|safe}}
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">back to my Dashboard</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- delete_post -->
+<div class="modal fade" id="delete_post" tabindex="-1" role="dialog" aria-labelledby="delete_post" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="delete_post">Delete your Post???</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        if you delete your post you will lose its Information!!!
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <form action="{{url_for('postsapp.delete_post',id=post.id)}}" method="POST">
+          <input type="submit" class="btn btn-danger" value="Delete it">
+
+        </form>
+
+      </div>
+    </div>
+  </div>
+</div>
+<!--zuerst postsViewPage dann PostsCard dann cann man mit modal arbeiten oder post view als modal?-->
+<!-- update Post -->
+<div class="modal fade" id="update_post-{{post.id}}" tabindex="-1" role="dialog" aria-labelledby="update_post-{{post.id}}" aria-hidden="true">
+  <div class="modal-dialog " role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="update_post-{{post.id}}">Update your Post???</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        after updating you can change it again!!
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-lg btn-secondary" data-dismiss="modal">No just Close</button>
+        <form action="{{url_for('postsapp.editpost',id=post.id)}}" method="POST">
+          <input type="submit" class="btn btn-info btn-lg" value="Update it anyway">
+        </form>
+
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- update User Data geht erst wenn die update außerhalb Daschboard dann velinke ich update button mit diese Modal -->
+<!--<div class="modal fade" id="update_user" tabindex="-1" role="dialog" aria-labelledby="update_user" aria-hidden="true">-->
+<!--  <div class="modal-dialog" role="document">-->
+<!--    <div class="modal-content">-->
+<!--      <div class="modal-header">-->
+<!--        <h5 class="modal-title" id="update_user">Update your Profile Data???</h5>-->
+<!--        <button type="button" class="close" data-dismiss="modal" aria-label="Close">-->
+<!--          <span aria-hidden="true">&times;</span>-->
+<!--        </button>-->
+<!--      </div>-->
+<!--      <div class="modal-body">-->
+<!--        after updating you can change it again!!-->
+<!--      </div>-->
+<!--      <div class="modal-footer">-->
+<!--        <button type="button" class="btn btn-secondary" data-dismiss="modal">No just Close</button>-->
+<!--        <form action="{{url_for('postsapp.editpost',id=post.id)}}" method="POST">-->
+<!--          <input type="submit" class="btn btn-danger" value="Update my Profile">-->
+
+<!--        </form>-->
+
+<!--      </div>-->
+<!--    </div>-->
+<!--  </div>-->
+<!--</div>-->
+
+<!--Modal give possiblity for admin to delete user or change Profiles from Admin Dashboard-->
+<!--comming soon first admin route in admin Blueprint?-->
